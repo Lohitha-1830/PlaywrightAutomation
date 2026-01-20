@@ -1,0 +1,12 @@
+Required commands:
+1.TO run all the test case
+ npx playwright test
+2. To run specific file
+ npx playwright test ./tests/alerts.spec.js
+3.To run in headed mode
+ npx playwright test ./tests/alerts.spec.js --headed
+4. Run on single browser
+ npx playwright test --porject=chromium --headed
+5. To open report
+ npx playwright show-report
+6. 
