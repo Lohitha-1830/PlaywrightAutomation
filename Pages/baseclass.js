@@ -17,5 +17,8 @@ class baseclass{
     async timeout(time){
         await this.page.waitForTimeout(time);
     }
+    async closeBrowser(){
+        await this.page.close();
+    }
 }
 module.exports= baseclass;
