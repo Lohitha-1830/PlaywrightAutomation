@@ -2,7 +2,7 @@ const {test,expect,chromium} = require('@playwright/test') ;
 const Login = require('../Pages/Login.js');
 const testData = require('../testdata/testData.json');
 //const baseclass = require('./Pages/baseclass.js');
-test("Verify login", async()=>{
+test("@smoke Verify login", async()=>{
    
 const browser=await chromium.launch({
     headless:false

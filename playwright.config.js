@@ -30,6 +30,7 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    headless: false,
     trace: 'on-first-retry',
     video: 'on',
   },
@@ -40,6 +41,16 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
+    // {
+    //   name: 'Mobile Emulator',
+    //   use: { ...devices['iPhoneX'] },
+    // },
+    // {
+    //   name: 'Mobile Emulator',
+    //   use: { ...devices['iPhone XR'],
+    //     viewport: {width:200,height:400},
+    //    },
+    // }
 
     // {
     //   name: 'firefox',

@@ -9,4 +9,12 @@ Required commands:
  npx playwright test --porject=chromium --headed
 5. To open report
  npx playwright show-report
-6. 
+6. Run with tag
+ npx playwright test --grep "@smoke"
+7. Exclude particular tag and run everything else
+ npx playwright test --grep-invert "@smoke"
+8. Run tests having either @smoke or @auth:
+ npx playwright test --grep "@smoke|@auth"
+9. Run tests with @regression but not @slow:
+ npx playwright test --grep "@regression" --grep-invert "@slow"
+ 
