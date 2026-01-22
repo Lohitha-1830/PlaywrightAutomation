@@ -33,6 +33,7 @@ export default defineConfig({
     headless: false,
     trace: 'on-first-retry',
     video: 'on',
+    Screenshot: "fullpage",
   },
 
   /* Configure projects for major browsers */
