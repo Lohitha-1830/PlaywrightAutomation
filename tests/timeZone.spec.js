@@ -14,6 +14,6 @@ test("test timezone based app", async ({ browser }) => {
 
     await expect(page.locator('//span[@class="icp-nav-flag icp-nav-flag-in icp-nav-flag-lop"]')).toBeVisible();
     await page.screenshot({ path: './test-results/screenshot.png', fullPage: true });
-
+    
     await context.close();
 });

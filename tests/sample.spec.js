@@ -5,7 +5,7 @@ test('Verify login', async ({page}) => {
     const url=  page.url();
     console.log("Url is "+url);
 
-    const title=  page.title();
+    const title=  await page.title();
     console.log("title is "+title);
 
    await expect(page).toHaveTitle("Automation Testing Practice");
@@ -50,6 +50,44 @@ await expect(page.locator('//div[contains(text(),"You selected a range of 31 day
 await page.getByText("Upload Single File").click();
 //await expect(page.locator('#singleFileStatus')).toContainText("No file selected.");
 await expect(page.getByText("No file selected.")).toBeVisible();
+//upload single File
+const upload = page.waitForEvent('filechooser');
+await page.locator('#singleFileInput').click();
+const uploadFile = await upload;
+await uploadFile.setFiles('C:/Users/veeravenkatal.pandr/OneDrive - HCL TECHNOLOGIES LIMITED/Desktop/UploadFileSample.png');
+await page.getByText("Upload Single File").click();
+
+//webtable
+const row= await page.locator('//table[@name="BookTable"]/tbody/tr');
+const rows= await row.count();
+console.log('Total rows are '+ rows);
+
+const ebookName= 'Learn Java';
+const eAuthor= 'Mukesh';
+const eprice= '500';
+
+for(let i=1; i<rows;i++){
+  const bookName= await row.nth(i).locator('td').nth(0).innerText();
+  //console.log("Book Name "+bookName);
+  if(bookName===ebookName){
+ const author = await row.nth(i).locator('td').nth(1).innerText();
+ const price = await row.nth(i).locator('td').nth(3).innerText();
+
+ console.log("Book Name "+bookName);
+ console.log("Author Name "+author);
+ console.log("Price "+price);
+
+ await expect(author).toBe(eAuthor);
+ await expect(price).toBe(eprice);
+}
+}
+//second and direct way to assert in a row using has
+const bName= page.locator('//table[@name="BookTable"]/tbody/tr',
+{has: page.locator('td',{hasText:'Master In JS'}) });
+console.log('------- '+bName);
+await expect(bName.locator('td').nth(1)).toHaveText('Amit');
+await expect(bName.locator('td').nth(3)).toHaveText('1000');
+
 await page.waitForTimeout(3000);
 
 await page.close();
